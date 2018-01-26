@@ -21,12 +21,12 @@ public class TVSignal : MonoBehaviour {
 		return col.radius;
 	}
 
-	void OnDrawGizmos () {
+	/*void OnDrawGizmos () {
 		if (col) {
 			Gizmos.color = Color.yellow;
 			Gizmos.DrawWireSphere (transform.position, col.radius);
 		}
-	}
+	}*/
 }
 
 public enum ChannelType {
