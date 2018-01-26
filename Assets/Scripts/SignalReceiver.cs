@@ -5,9 +5,10 @@ using UnityEngine;
 public class SignalReceiver : MonoBehaviour {
 
 	[ShowOnly]
-	public float signalStrength;
+	public bool inRange = false;
+	[ShowOnly]
+	public float signalDisturbance;
 
-	bool inRange = false;
 	RadioSignal currentSignal;
 	
 	void Update () {
@@ -17,8 +18,18 @@ public class SignalReceiver : MonoBehaviour {
 	}
 
 	void ReceiveSignal () {
-		signalStrength = Vector2.Distance (transform.position, currentSignal.transform.position);
-		Debug.Log ("Receiving signal at " + signalStrength);
+		signalDisturbance = Vector2.Distance (transform.position, currentSignal.transform.position);
+		//Debug.Log ("Receiving signal at " + signalDisturbance);
+	}
+
+	public float DisturbanceNormalized () {
+		if (inRange) {
+			float disturbanceNormalized = Mathf.InverseLerp (0, currentSignal.SignalRadius (), signalDisturbance);
+			disturbanceNormalized = Mathf.Clamp01 (disturbanceNormalized);
+			return disturbanceNormalized;
+		} else {
+			return 1;
+		}
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
