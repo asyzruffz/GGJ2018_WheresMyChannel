@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class RadioSignal : MonoBehaviour {
+public class TVSignal : MonoBehaviour {
+
+	public ChannelType channelType;
 
 	CircleCollider2D col;
 
@@ -25,4 +27,10 @@ public class RadioSignal : MonoBehaviour {
 			Gizmos.DrawWireSphere (transform.position, col.radius);
 		}
 	}
+}
+
+public enum ChannelType {
+	Sport,
+	News,
+	Concert
 }

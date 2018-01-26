@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 882647595}
   - component: {fileID: 882647597}
   - component: {fileID: 882647596}
+  - component: {fileID: 882647598}
   m_Layer: 5
   m_Name: Channel
   m_TagString: Untagged
@@ -401,13 +402,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f0fe8732977884ef4962f317747dd85a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -421,6 +422,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 882647594}
+--- !u!95 &882647598
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 882647594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee3329dbbd29a8418ef89b4d69155ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1033511699
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +511,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inRange: 0
-  signalStrength: 0
+  signalDisturbance: 0
+  currentSignal: {fileID: 0}
 --- !u!50 &1033511705
 Rigidbody2D:
   serializedVersion: 4
@@ -526,7 +545,7 @@ GameObject:
   - component: {fileID: 1080038477}
   - component: {fileID: 1080038480}
   m_Layer: 0
-  m_Name: RadioSignal
+  m_Name: TVSignal
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -591,6 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b921fdea699624b49b7ff2bdae2fda4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  channelType: 1
 --- !u!1 &1113182733
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -864,7 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c5ca491818c0044ac47abaf4bb9701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channelView: {fileID: 882647596}
+  channelView: {fileID: 882647598}
   staticView: {fileID: 1113182735}
   antenna: {fileID: 1033511703}
 --- !u!1 &2084647480

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TVScreen : MonoBehaviour {
 
-	public Image channelView;
+	public Animator channelView;
 	public Image staticView;
 	[Space]
 	public SignalReceiver antenna;
@@ -16,6 +16,7 @@ public class TVScreen : MonoBehaviour {
 	
 	void Update () {
 		if (antenna.inRange) {
+			channelView.SetInteger ("ChannelState", (int)antenna.currentSignal.channelType);
 			staticView.color = new Color (staticView.color.r, staticView.color.g, staticView.color.b, antenna.DisturbanceNormalized ());
 		}
 	}

@@ -8,8 +8,7 @@ public class SignalReceiver : MonoBehaviour {
 	public bool inRange = false;
 	[ShowOnly]
 	public float signalDisturbance;
-
-	RadioSignal currentSignal;
+	public TVSignal currentSignal;
 	
 	void Update () {
 		if (inRange) {
@@ -33,7 +32,7 @@ public class SignalReceiver : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		currentSignal = other.GetComponent<RadioSignal> ();
+		currentSignal = other.GetComponent<TVSignal> ();
 		if (currentSignal) {
 			inRange = true;
 		}
