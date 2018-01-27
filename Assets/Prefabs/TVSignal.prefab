@@ -88,4 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b921fdea699624b49b7ff2bdae2fda4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channelType: 1
+  channelType: 0

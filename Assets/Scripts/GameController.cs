@@ -8,6 +8,7 @@ public class GameController : Singleton<GameController> {
 	public Speeches instructions;
 	public Uncle boss;
 	public TV tv;
+	public SignalController sigCon;
 
 	[Space][ShowOnly]
 	public bool playingGame = false;
@@ -19,6 +20,8 @@ public class GameController : Singleton<GameController> {
 	void Update () {
 		if (!playingGame && instructions.HasEnded ()) {
 			SetSpeechBubbleDisplay (false);
+			instructions.gameObject.SetActive (false);
+			sigCon.DoNextStage ();
 			playingGame = true;
 		} else if (playingGame && boss.rage >= 100) {
 			instructions.RestartSubtitle ();

@@ -16,15 +16,19 @@ public class Uncle : MonoBehaviour {
 	public float coolOffTime = 3;
 	public float coolRegenRate = 1;
 	public float initialCoolBonus = 5;
+	public float satisfiedDuration = 4;
 
 	[Header("TV")]
 	public SignalReceiver antenna;
+	public SignalController channelChanger;
 
 	[Space]
 	[SerializeField]
 	float angerRate = 0;
 	[SerializeField]
 	float patience;
+	[SerializeField]
+	float satisfaction;
 
 	void Start () {
 		patience = initialCoolBonus + coolOffTime;
@@ -40,6 +44,7 @@ public class Uncle : MonoBehaviour {
 				BecomingAngry ();
 			} else {
 				RegainCalmness ();
+				WatchTV ();
 			}
 		}
 		
@@ -59,5 +64,14 @@ public class Uncle : MonoBehaviour {
 	void RegainCalmness () {
 		patience = Mathf.Min (patience + coolRegenRate * Time.deltaTime, coolOffTime);
 		angerRate = (patience >= coolOffTime) ? temper * -0.5f : 0;
+	}
+
+	void WatchTV () {
+		satisfaction += Time.deltaTime;
+		if (satisfaction >= satisfiedDuration) {
+			satisfaction = 0;
+			antenna.inRange = false;
+			channelChanger.DoNextStage ();
+		}
 	}
 }
