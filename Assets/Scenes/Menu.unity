@@ -311,8 +311,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 959102168}
-  m_RootOrder: 1
+  m_Father: {fileID: 1942191787}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &359051679
 Animator:
@@ -513,7 +513,7 @@ Transform:
   - {fileID: 1196160588}
   - {fileID: 202179541}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &763636165
 GameObject:
@@ -963,6 +963,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 959102168}
+  - component: {fileID: 959102170}
+  - component: {fileID: 959102169}
   m_Layer: 0
   m_Name: BackCollision
   m_TagString: Untagged
@@ -981,10 +983,42 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1942191787}
-  - {fileID: 359051678}
   m_Father: {fileID: 1978721129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &959102169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959102167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &959102170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959102167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089fd217e5a464f86985dc66ce620c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCredit: 0
+  isPlay: 0
+  isQuit: 0
+  isBack: 1
+  buttonSFX: {fileID: 1720206449}
+  buttonUpSFX: {fileID: 8300000, guid: 1773f5c0a9c8a4492984319df467dca6, type: 3}
+  buttonDownSFX: {fileID: 8300000, guid: 24f9ac7df436a4429ab9c53737236704, type: 3}
+  buttonTop: {fileID: 1942191786}
+  menuObject: {fileID: 456588525}
+  creditObject: {fileID: 1978721128}
 --- !u!1 &1020572850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1205,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1196160588}
+  - component: {fileID: 1196160590}
+  - component: {fileID: 1196160589}
   m_Layer: 0
   m_Name: QuitCollision
   m_TagString: Untagged
@@ -1192,6 +1228,39 @@ Transform:
   m_Father: {fileID: 456588526}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1196160589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1196160587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &1196160590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1196160587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089fd217e5a464f86985dc66ce620c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCredit: 0
+  isPlay: 0
+  isQuit: 1
+  isBack: 0
+  buttonSFX: {fileID: 1720206449}
+  buttonUpSFX: {fileID: 8300000, guid: 1773f5c0a9c8a4492984319df467dca6, type: 3}
+  buttonDownSFX: {fileID: 8300000, guid: 24f9ac7df436a4429ab9c53737236704, type: 3}
+  buttonTop: {fileID: 1549604082}
+  menuObject: {fileID: 456588525}
+  creditObject: {fileID: 1978721128}
 --- !u!1 &1245985672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1467,7 @@ Transform:
   - {fileID: 859365271}
   - {fileID: 2027339720}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440451046
 GameObject:
@@ -1674,6 +1743,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1655476677}
+  - component: {fileID: 1655476679}
+  - component: {fileID: 1655476678}
   m_Layer: 0
   m_Name: CreditCollision
   m_TagString: Untagged
@@ -1695,6 +1766,39 @@ Transform:
   m_Father: {fileID: 456588526}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1655476678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1655476676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &1655476679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1655476676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089fd217e5a464f86985dc66ce620c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCredit: 1
+  isPlay: 0
+  isQuit: 0
+  isBack: 0
+  buttonSFX: {fileID: 1720206449}
+  buttonUpSFX: {fileID: 8300000, guid: 1773f5c0a9c8a4492984319df467dca6, type: 3}
+  buttonDownSFX: {fileID: 8300000, guid: 24f9ac7df436a4429ab9c53737236704, type: 3}
+  buttonTop: {fileID: 1457714542}
+  menuObject: {fileID: 456588525}
+  creditObject: {fileID: 1978721128}
 --- !u!1 &1689294315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1807,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1689294316}
-  - component: {fileID: 1689294317}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -1722,19 +1825,117 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1689294317
-MonoBehaviour:
+--- !u!1 &1720206448
+GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1689294315}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1720206450}
+  - component: {fileID: 1720206449}
+  m_Layer: 0
+  m_Name: ButtonSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1720206449
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720206448}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1dfd713ef304c5db90189e61d37c24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c762402367eed42c0bc439d013966dd0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &1720206450
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720206448}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.586611, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793072377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +2032,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 359051678}
   m_Father: {fileID: 959102168}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1923,7 +2125,7 @@ Transform:
   - {fileID: 1031016005}
   - {fileID: 1020572851}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2027339719
 GameObject:
@@ -2073,6 +2275,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2051918453}
+  - component: {fileID: 2051918455}
+  - component: {fileID: 2051918454}
   m_Layer: 0
   m_Name: PlayCollision
   m_TagString: Untagged
@@ -2094,3 +2298,36 @@ Transform:
   m_Father: {fileID: 456588526}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2051918454
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051918452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &2051918455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051918452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089fd217e5a464f86985dc66ce620c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCredit: 0
+  isPlay: 1
+  isQuit: 0
+  isBack: 0
+  buttonSFX: {fileID: 1720206449}
+  buttonUpSFX: {fileID: 8300000, guid: 1773f5c0a9c8a4492984319df467dca6, type: 3}
+  buttonDownSFX: {fileID: 8300000, guid: 24f9ac7df436a4429ab9c53737236704, type: 3}
+  buttonTop: {fileID: 1245985672}
+  menuObject: {fileID: 456588525}
+  creditObject: {fileID: 1978721128}
