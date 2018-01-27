@@ -7,9 +7,12 @@ public class Speeches : MonoBehaviour {
 	public float timePerPage = 1;
 	public KeyCode skipKey = KeyCode.Space;
 	public bool startOnAwake = true;
+	[TextArea]
 	public string[] subtitleText;
 	[Header("Sound")]
 	public AudioClip textSound;
+	[Header ("Misc")]
+	public TV tv;
 
 	private Text displayText;
 	private AudioSource audioSource;
@@ -26,6 +29,10 @@ public class Speeches : MonoBehaviour {
 
 	void Update () {
 		if (textEnd || !textStart) {
+			if (!startOnAwake && Input.GetKeyDown (skipKey)) {
+				textStart = true;
+				tv.TurnOnTV (true);
+			}
 			return;
 		}
 
@@ -44,7 +51,7 @@ public class Speeches : MonoBehaviour {
 	public void RestartSubtitle() {
 		currentPage = 0;
 		timer = 0;
-		textStart = true;
+		textStart = startOnAwake;
 		textEnd = false;
 	}
 

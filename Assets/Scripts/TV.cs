@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class TVScreen : MonoBehaviour {
+public class TV : MonoBehaviour {
 	
 	public SignalReceiver antenna;
 
@@ -35,10 +35,12 @@ public class TVScreen : MonoBehaviour {
 		if (channelList.Length > 0) {
 			audioSources[1].clip = channelList[0];
 			audioSources[1].Play ();
-			InterpolateSound (0);
+			InterpolateTVSound (0);
 		} else {
 			Debug.Log ("No channel sound found!");
 		}
+
+		TurnOnTV (false);
 	}
 	
 	void Update () {
@@ -53,11 +55,15 @@ public class TVScreen : MonoBehaviour {
 				prevChannel = channelType;
 			}
 
-			InterpolateSound (1 - antenna.DisturbanceNormalized ());
+			InterpolateTVSound (1 - antenna.DisturbanceNormalized ());
 		}
 	}
 
-	void InterpolateSound (float value) {
+	public void TurnOnTV (bool enabled) {
+		soundMixer.SetFloat ("MasterVolume", MapValueToVolume (enabled ? 1 : 0));
+	}
+
+	void InterpolateTVSound (float value) {
 		soundMixer.SetFloat ("ChannelVolume", MapValueToVolume (value));
 		soundMixer.SetFloat ("NoiseVolume", MapValueToVolume (1 - value));
 	}

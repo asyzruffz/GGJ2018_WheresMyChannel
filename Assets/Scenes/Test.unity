@@ -299,11 +299,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651f56fb8529e344591b2403c4536d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unclePreference: 0
+  preference: 0
   signalThreshold: 0.7
   rage: 0
   temper: 2
-  waitTime: 5
+  coolOffTime: 3
+  coolRegenRate: 1
+  initialCoolBonus: 5
   antenna: {fileID: 1033511703}
   angerRate: 0
   patience: 0
@@ -491,6 +493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769327796}
   - component: {fileID: 769327797}
+  - component: {fileID: 769327798}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -506,7 +509,7 @@ Transform:
   m_GameObject: {fileID: 769327795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1033511702}
   m_RootOrder: 0
@@ -543,7 +546,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8dbf50e9d60c9034abfd8415acd732ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8969012c33f204a8db4f6f7e1f4e4b4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -552,6 +555,23 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+--- !u!95 &769327798
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769327795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e1192c0a54f2734b99975d9aa25fbf2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &844213061
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechBubble: {fileID: 2029566770}
   instructions: {fileID: 1893663016}
+  boss: {fileID: 474720003}
+  tv: {fileID: 1976164161}
   playingGame: 0
 --- !u!1 &882647594
 GameObject:
@@ -712,8 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.05
---- !u!70 &1033511701
-CapsuleCollider2D:
+--- !u!58 &1033511701
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -725,8 +747,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 0.5}
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 0.9
 --- !u!4 &1033511702
 Transform:
   m_ObjectHideFlags: 0
@@ -734,7 +756,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1033511699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7184052, y: 0.06382135, z: 0}
+  m_LocalPosition: {x: -2.93, y: 1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 769327796}
@@ -1600,8 +1622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_AnchoredPosition: {x: -4.4999995, y: 5.9999995}
+  m_SizeDelta: {x: -53, y: -36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1893663014
 AudioSource:
@@ -1696,7 +1718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1710,7 +1732,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1730,12 +1752,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timePerPage: 3
   skipKey: 32
-  startOnAwake: 1
+  startOnAwake: 0
   subtitleText:
-  - Blablabla
-  - bla blahbabla
-  - Yeah, you know what to do...
+  - "Let's see what's \non TV."
+  - "What?! \nIt's doing it again."
+  - "Hey you, \ngo and adjust \nthe antenna."
   textSound: {fileID: 0}
+  tv: {fileID: 1976164161}
 --- !u!222 &1893663017
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1754,7 +1777,7 @@ GameObject:
   - component: {fileID: 1976164163}
   - component: {fileID: 1976164162}
   m_Layer: 5
-  m_Name: TVScreen
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1973,6 +1996,7 @@ GameObject:
   - component: {fileID: 2029566771}
   - component: {fileID: 2029566773}
   - component: {fileID: 2029566772}
+  - component: {fileID: 2029566774}
   m_Layer: 5
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -2011,15 +2035,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fb25718f96ae3074a8039c334b5af5d6, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c154a9aaac2ee430eacf4fc9f87952d2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2032,6 +2056,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029566770}
+--- !u!95 &2029566774
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029566770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b40c89e4ce45617459ff1ff2eedb51f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2084647480
 GameObject:
   m_ObjectHideFlags: 0
