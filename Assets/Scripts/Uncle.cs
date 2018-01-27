@@ -40,7 +40,7 @@ public class Uncle : MonoBehaviour {
 
 			if (signalStrength <= signalThreshold) {
 				BecomingAngry ();
-			} else {
+			} else if (antenna.IsTransmissionSuccess ()) {
 				RegainCalmness ();
 				WatchTV ();
 			}

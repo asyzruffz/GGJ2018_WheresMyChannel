@@ -8,8 +8,11 @@ public class SignalReceiver : MonoBehaviour {
 	public bool inRange = false;
 	[ShowOnly]
 	public float signalDisturbance;
+	[ShowOnly]
 	public TVSignal currentSignal;
-	
+	public SignalController station;
+	public SpeechPrompts customer;
+
 	void Update () {
 		if (inRange) {
 			ReceiveSignal ();
@@ -31,10 +34,17 @@ public class SignalReceiver : MonoBehaviour {
 		}
 	}
 
+	public bool IsTransmissionSuccess () {
+		return inRange && currentSignal.channelType == station.CorrectChannelSignal ();
+	}
+
 	void OnTriggerEnter2D (Collider2D other) {
 		currentSignal = other.GetComponent<TVSignal> ();
 		if (currentSignal) {
 			inRange = true;
+			if (!IsTransmissionSuccess ()) {
+				customer.SpeakWith (SpeechTone.Annoyed);
+			}
 		}
 
 	}

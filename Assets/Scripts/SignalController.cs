@@ -8,11 +8,14 @@ public class SignalController : MonoBehaviour {
 
 	public GameObject signalPrefab;
 	public Transform[] spawnPoints;
+	[Space]
+	public SpeechPrompts prompt;
 
 	RandomSample sample;
 	List<GameObject> signalList = new List<GameObject> ();
 	bool changeLvl;
 	int currLvl, currTrial;
+	ChannelType trueChannel;
 
 	void Start () {
 		sample = new RandomSample (spawnPoints.Length);
@@ -36,6 +39,7 @@ public class SignalController : MonoBehaviour {
 	void SetStage (int level, int trial) {
 		ResetStage ();
 		trial = trial % (Enum.GetNames (typeof (ChannelType)).Length);
+		trueChannel = (ChannelType)trial;
 
 		GameObject tempSignal;
 		switch (level) {
@@ -72,6 +76,8 @@ public class SignalController : MonoBehaviour {
 				signalList.Add (tempSignal);
 				break;
 		}
+
+		prompt.SpeakWith (SpeechTone.Bored);
 	}
 
 	void ResetStage () {
@@ -91,5 +97,7 @@ public class SignalController : MonoBehaviour {
 		changeLvl = true;
 	}
 
-
+	public ChannelType CorrectChannelSignal () {
+		return trueChannel;
+	}
 }

@@ -28,6 +28,7 @@ public class GameController : Singleton<GameController> {
 			SetSpeechBubbleDisplay (true);
 			tv.TurnOnTV (false);
 			playingGame = false;
+			boss.GetComponent<SpeechPrompts> ().SpeakWith (SpeechTone.GaveUp);
 		}
 	}
 
