@@ -35,6 +35,7 @@ public class TVScreen : MonoBehaviour {
 		if (channelList.Length > 0) {
 			audioSources[1].clip = channelList[0];
 			audioSources[1].Play ();
+			InterpolateSound (0);
 		} else {
 			Debug.Log ("No channel sound found!");
 		}
