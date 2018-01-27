@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class Subtitles : MonoBehaviour {
+public class Speeches : MonoBehaviour {
 
 	public float timePerPage = 1;
 	public KeyCode skipKey = KeyCode.Space;

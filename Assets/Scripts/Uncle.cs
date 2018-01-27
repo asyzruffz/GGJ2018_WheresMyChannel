@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Uncle : MonoBehaviour {
 
-	public ChannelType unclePreference;
+	[Header("Channel")]
+	public ChannelType preference;
 	[Range (0, 1)]
 	public float signalThreshold = 0.8f;
+
+	[Header("Attitude")]
 	[Range(0,100)]
 	public float rage;
 	public float temper = 1;
-	public float waitTime = 3;
+	public float coolOffTime = 3;
+	public float coolRegenRate = 1;
+	public float initialCoolBonus = 5;
 
 	[Header("TV")]
 	public SignalReceiver antenna;
@@ -22,31 +27,36 @@ public class Uncle : MonoBehaviour {
 	float patience;
 
 	void Start () {
-		patience = waitTime;
+		patience = initialCoolBonus + coolOffTime;
 	}
 	
 	void Update () {
-		float signalStrength = 1 - antenna.DisturbanceNormalized ();
+		bool inGame = GameController.Instance != null ? GameController.Instance.playingGame : true;
 
-		if (signalStrength <= signalThreshold) {
-			if (patience > 0) {
-				patience -= Time.deltaTime;
-			} else {
+		if (inGame) {
+			float signalStrength = 1 - antenna.DisturbanceNormalized ();
+
+			if (signalStrength <= signalThreshold) {
 				BecomingAngry ();
+			} else {
+				RegainCalmness ();
 			}
-		} else {
-			RegainCalmness ();
 		}
-	}
-
-	void BecomingAngry () {
-		angerRate = antenna.DisturbanceNormalized () * temper;
+		
 		rage += angerRate * Time.deltaTime;
 		rage = Mathf.Clamp (rage, 0.0f, 100.0f);
 	}
 
+	void BecomingAngry () {
+		if (patience > 0) {
+			patience -= Time.deltaTime;
+		} else {
+			angerRate = antenna.DisturbanceNormalized () * temper;
+		}
+	}
+
 	void RegainCalmness () {
-		angerRate = 0;
-		patience = waitTime;
+		patience = Mathf.Min (patience + coolRegenRate * Time.deltaTime, coolOffTime);
+		angerRate = patience >= coolOffTime ? temper * -0.5f : 0;
 	}
 }

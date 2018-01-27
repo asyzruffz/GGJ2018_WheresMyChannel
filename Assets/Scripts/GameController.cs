@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameController : Singleton<GameController> {
 
 	public GameObject speechBubble;
-	public Subtitles instructions;
+	public Speeches instructions;
+	public Uncle boss;
 
+	[Space][ShowOnly]
 	public bool playingGame = false;
 
 	void Start () {
@@ -17,6 +19,9 @@ public class GameController : Singleton<GameController> {
 		if (!playingGame && instructions.HasEnded ()) {
 			SetSpeechBubbleDisplay (false);
 			playingGame = true;
+		} else if (playingGame && boss.rage >= 100) {
+			instructions.RestartSubtitle ();
+			playingGame = false;
 		}
 	}
 
