@@ -11,6 +11,7 @@ public class TV : MonoBehaviour {
 	[Header ("Screen")]
 	public Animator channelView;
 	public Image staticView;
+	public GameObject glassPanel;
 
 	[Header("Speaker")]
 	public AudioMixer soundMixer;
@@ -61,6 +62,7 @@ public class TV : MonoBehaviour {
 
 	public void TurnOnTV (bool enabled) {
 		soundMixer.SetFloat ("MasterVolume", MapValueToVolume (enabled ? 1 : 0));
+		glassPanel.SetActive (!enabled);
 	}
 
 	void InterpolateTVSound (float value) {

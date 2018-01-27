@@ -50,6 +50,7 @@ public class Uncle : MonoBehaviour {
 	void BecomingAngry () {
 		if (patience > 0) {
 			patience -= Time.deltaTime;
+			angerRate = 0;
 		} else {
 			angerRate = antenna.DisturbanceNormalized () * temper;
 		}
@@ -57,6 +58,6 @@ public class Uncle : MonoBehaviour {
 
 	void RegainCalmness () {
 		patience = Mathf.Min (patience + coolRegenRate * Time.deltaTime, coolOffTime);
-		angerRate = patience >= coolOffTime ? temper * -0.5f : 0;
+		angerRate = (patience >= coolOffTime) ? temper * -0.5f : 0;
 	}
 }

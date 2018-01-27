@@ -23,6 +23,7 @@ public class GameController : Singleton<GameController> {
 		} else if (playingGame && boss.rage >= 100) {
 			instructions.RestartSubtitle ();
 			SetSpeechBubbleDisplay (true);
+			tv.TurnOnTV (false);
 			playingGame = false;
 		}
 	}
