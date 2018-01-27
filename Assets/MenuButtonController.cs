@@ -8,6 +8,9 @@ public class MenuButtonController : MonoBehaviour {
 	public bool isPlay;
 	public bool isQuit;
 	public bool isBack;
+	public bool isMenu;
+	public bool isResume;
+
 	private bool exiting;
 	private bool entering;
 
@@ -20,6 +23,7 @@ public class MenuButtonController : MonoBehaviour {
 
 	public GameObject menuObject;
 	public GameObject creditObject;
+	public GameObject pauseObject;
 
 	// Use this for initialization
 	void Start () {
@@ -61,15 +65,23 @@ public class MenuButtonController : MonoBehaviour {
 				Application.LoadLevel ("Test");
 			}
 			if (isCredit) {
-				menuObject.SetActive (false);
-				creditObject.SetActive (true);
+				if(menuObject != null) menuObject.SetActive (false);
+				if(creditObject != null) creditObject.SetActive (true);
 			}
 			if (isBack) {
-				menuObject.SetActive (true);
-				creditObject.SetActive (false);
+				if(menuObject != null) menuObject.SetActive (true);
+				if(creditObject != null) creditObject.SetActive (false);
 			}
 			if (isQuit) {
 				Application.Quit ();
+			}
+			if (isMenu) {
+				Application.LoadLevel ("Menu");
+			}
+			if (isResume) 
+			{
+				if (pauseObject != null)
+					pauseObject.SetActive (false);
 			}
 		}
 	}

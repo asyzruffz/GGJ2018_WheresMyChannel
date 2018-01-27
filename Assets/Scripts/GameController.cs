@@ -10,6 +10,8 @@ public class GameController : Singleton<GameController> {
 	public TV tv;
 	public SignalController sigCon;
 
+	public GameObject pauseObject;
+
 	[Space][ShowOnly]
 	public bool playingGame = false;
 
@@ -17,7 +19,10 @@ public class GameController : Singleton<GameController> {
 		
 	}
 	
-	void Update () {
+	void Update () 
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+			pauseObject.SetActive (true);
 		if (!playingGame && instructions.HasEnded ()) {
 			SetSpeechBubbleDisplay (false);
 			instructions.gameObject.SetActive (false);
