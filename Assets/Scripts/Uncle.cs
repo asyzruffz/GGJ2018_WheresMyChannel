@@ -12,22 +12,20 @@ public class Uncle : MonoBehaviour {
 	[Header("Attitude")]
 	[Range(0,100)]
 	public float rage;
-	public float temper = 1;
+	[ShowOnly]
+	public float patience;
+	[Space]
+	public float temper = 2;
 	public float coolOffTime = 3;
-	public float coolRegenRate = 1;
+	public float coolRegenRate = 2;
 	public float initialCoolBonus = 5;
 	public float satisfiedDuration = 4;
 
 	[Header("TV")]
 	public SignalReceiver antenna;
 	public SignalController channelChanger;
-
-	[Space]
-	[SerializeField]
+	
 	float angerRate = 0;
-	[SerializeField]
-	float patience;
-	[SerializeField]
 	float satisfaction;
 
 	void Start () {
