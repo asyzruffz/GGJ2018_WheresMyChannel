@@ -24,6 +24,7 @@ public class MenuButtonController : MonoBehaviour {
 	public GameObject menuObject;
 	public GameObject creditObject;
 	public GameObject pauseObject;
+	public GameObject pauseCanvas;
 
 	// Use this for initialization
 	void Start () {
@@ -82,6 +83,8 @@ public class MenuButtonController : MonoBehaviour {
 			{
 				if (pauseObject != null)
 					pauseObject.SetActive (false);
+				if (pauseCanvas != null)
+					pauseCanvas.SetActive (false);
 			}
 		}
 	}
