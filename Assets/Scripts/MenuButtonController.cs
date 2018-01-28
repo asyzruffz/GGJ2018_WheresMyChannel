@@ -76,6 +76,7 @@ public class MenuButtonController : MonoBehaviour {
 				Application.Quit ();
 			}
 			if (isMenu) {
+				Time.timeScale = 1;
 				SceneManager.LoadScene ("Menu");
 			}
 			if (isResume) 
