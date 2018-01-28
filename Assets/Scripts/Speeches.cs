@@ -42,7 +42,7 @@ public class Speeches : MonoBehaviour {
 			displayText.text = subtitleText[currentPage];
 		}
 
-		if ((timer >= timePerPage || Input.GetKeyDown (skipKey)) && !GameController.Instance.pauseGame) {
+		if ((timer >= timePerPage || Input.GetKeyDown (skipKey) || Input.GetMouseButtonDown (0)) && !GameController.Instance.pauseGame) {
 			GoToNextPage ();
 		}
 

@@ -60,7 +60,7 @@ MonoBehaviour:
   gameOver: 0
   scoreNumber: 0
   finalScore: 0
-  scoreCanvas: {fileID: 0}
+  scoreCanvas: {fileID: 114616249410276970}
 --- !u!114 &114616249410276970
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,25 +9,37 @@ public class ScoreManager : MonoBehaviour {
 	public float scoreNumber;
 	public int finalScore;
 	public Text scoreCanvas;
+	public Uncle uncle;
+	public GameController gameController;
 
 	// Use this for initialization
 	void Start () 
 	{
-
+		scoreNumber = 0;
+		finalScore = 0;
+		gameOver = false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		finalScore = Mathf.FloorToInt (scoreNumber);
-		scoreCanvas.text = finalScore.ToString ();
+		if (gameController.playingGame) {
+			if (uncle.rage >= 100) {
+				gameOver = true;
+			}
+			finalScore = Mathf.FloorToInt (scoreNumber);
+			scoreCanvas.text = finalScore.ToString ();
+		}
 	}
 
 	void FixedUpdate()
 	{
-		if (!gameOver) 
+		if(gameController.playingGame)
 		{
-			scoreNumber += Time.deltaTime * 2;
+			if (!gameOver) 
+			{
+				scoreNumber += Time.deltaTime * 2;
+			}
 		}
 	}
 }
