@@ -27,6 +27,7 @@ public class Uncle : MonoBehaviour {
 	
 	float angerRate = 0;
 	float satisfaction;
+	float annoyGap;
 
 	void Start () {
 		patience = initialCoolBonus + coolOffTime;
@@ -40,6 +41,10 @@ public class Uncle : MonoBehaviour {
 
 			if (signalStrength <= signalThreshold) {
 				BecomingAngry ();
+				if (signalStrength > 0.5f && !antenna.IsTransmissionSuccess () && annoyGap <= 0) {
+					GetComponent<SpeechPrompts> ().SpeakWith (SpeechTone.Annoyed);
+					annoyGap = 2;
+				}
 			} else if (antenna.IsTransmissionSuccess ()) {
 				RegainCalmness ();
 				WatchTV ();
@@ -48,6 +53,10 @@ public class Uncle : MonoBehaviour {
 		
 		rage += angerRate * Time.deltaTime;
 		rage = Mathf.Clamp (rage, 0.0f, 100.0f);
+
+		if (annoyGap > 0) {
+			annoyGap -= Time.deltaTime;
+		}
 	}
 
 	void BecomingAngry () {

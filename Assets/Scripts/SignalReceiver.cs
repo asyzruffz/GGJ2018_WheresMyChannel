@@ -46,9 +46,6 @@ public class SignalReceiver : MonoBehaviour {
 		currentSignal = other.GetComponent<TVSignal> ();
 		if (currentSignal) {
 			inRange = true;
-			if (!IsTransmissionSuccess ()) {
-				customer.SpeakWith (SpeechTone.Annoyed);
-			}
 		}
 
 	}
