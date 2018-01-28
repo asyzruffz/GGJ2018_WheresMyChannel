@@ -14,6 +14,10 @@ public class SignalReceiver : MonoBehaviour {
 	public SpeechPrompts customer;
 
 	void Update () {
+		if (currentSignal == null) {
+			inRange = false;
+		}
+
 		if (inRange) {
 			ReceiveSignal ();
 		}

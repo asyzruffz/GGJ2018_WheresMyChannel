@@ -48,16 +48,16 @@ public class TV : MonoBehaviour {
 		if (antenna.inRange) {
 			int channelType = (int)antenna.currentSignal.channelType;
 			channelView.SetInteger ("ChannelState", channelType);
-			staticView.color = new Color (staticView.color.r, staticView.color.g, staticView.color.b, antenna.DisturbanceNormalized ());
 
 			if (prevChannel != channelType) {
 				audioSources[1].clip = channelList[channelType];
 				audioSources[1].Play ();
 				prevChannel = channelType;
 			}
-
-			InterpolateTVSound (1 - antenna.DisturbanceNormalized ());
 		}
+
+		staticView.color = new Color (staticView.color.r, staticView.color.g, staticView.color.b, antenna.DisturbanceNormalized ());
+		InterpolateTVSound (1 - antenna.DisturbanceNormalized ());
 	}
 
 	public void TurnOnTV (bool enabled) {

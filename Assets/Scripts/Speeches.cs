@@ -29,7 +29,8 @@ public class Speeches : MonoBehaviour {
 
 	void Update () {
 		if (textEnd || !textStart) {
-			if (!startOnAwake && (Input.GetKeyDown (skipKey) || Input.GetMouseButtonDown (0))) {
+			if (!startOnAwake && (Input.GetKeyDown (skipKey) || Input.GetMouseButtonDown (0)) 
+				&& !GameController.Instance.pauseGame) {
 				textStart = true;
 				tv.TurnOnTV (true);
 			}
@@ -41,7 +42,7 @@ public class Speeches : MonoBehaviour {
 			displayText.text = subtitleText[currentPage];
 		}
 
-		if (timer >= timePerPage || Input.GetKeyDown (skipKey)) {
+		if ((timer >= timePerPage || Input.GetKeyDown (skipKey)) && !GameController.Instance.pauseGame) {
 			GoToNextPage ();
 		}
 

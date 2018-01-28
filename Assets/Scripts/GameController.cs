@@ -12,6 +12,7 @@ public class GameController : Singleton<GameController> {
 	
 	public GameObject pauseCanvas;
 	public GameObject pauseObject;
+	public GameObject gameOverObject;
 
 	[Space][ShowOnly]
 	public bool playingGame = false;
@@ -24,11 +25,11 @@ public class GameController : Singleton<GameController> {
 	
 	void Update () 
 	{
-		if (Input.GetKeyDown (KeyCode.Escape)) 
+		if (Input.GetKeyDown (KeyCode.Escape) && boss.rage < 100) 
 		{
-			pauseCanvas.SetActive (true);
-			pauseObject.SetActive (true);
-			SetPaused (true);
+			pauseCanvas.SetActive (!pauseGame);
+			pauseObject.SetActive (!pauseGame);
+			SetPaused (!pauseGame);
 		}
 		if (!playingGame && instructions.HasEnded ()) {
 			SetSpeechBubbleDisplay (false);
@@ -43,6 +44,7 @@ public class GameController : Singleton<GameController> {
 			playingGame = false;
 			Cursor.visible = true;
 			boss.GetComponent<SpeechPrompts> ().SpeakWith (SpeechTone.GaveUp);
+			Invoke ("DisplayGameOver", 2.0f);
 		}
 	}
 
@@ -55,5 +57,10 @@ public class GameController : Singleton<GameController> {
 		tv.PauseTV (enabled);
 		Time.timeScale = enabled ? 0 : 1;
 		Cursor.visible = enabled ? true : (playingGame ? false : true);
+	}
+
+	void DisplayGameOver () {
+		pauseCanvas.SetActive (true);
+		gameOverObject.SetActive (true);
 	}
 }
