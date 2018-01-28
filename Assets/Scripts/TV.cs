@@ -65,6 +65,20 @@ public class TV : MonoBehaviour {
 		glassPanel.SetActive (!enabled);
 	}
 
+	float chanVol, noisVol;
+
+	public void PauseTV (bool enabled) {
+		if (enabled) {
+			soundMixer.GetFloat ("ChannelVolume",out chanVol);
+			soundMixer.GetFloat ("NoiseVolume", out noisVol);
+			soundMixer.SetFloat ("ChannelVolume", MapValueToVolume (0));
+			soundMixer.SetFloat ("NoiseVolume", MapValueToVolume (0));
+		} else {
+			soundMixer.SetFloat ("ChannelVolume", chanVol);
+			soundMixer.SetFloat ("NoiseVolume", noisVol);
+		}
+	}
+
 	void InterpolateTVSound (float value) {
 		soundMixer.SetFloat ("ChannelVolume", MapValueToVolume (value));
 		soundMixer.SetFloat ("NoiseVolume", MapValueToVolume (1 - value));

@@ -89,7 +89,7 @@ public class SignalController : MonoBehaviour {
 	}
 
 	Vector3 GenerateOffset () {
-		Vector3 offset = Random.insideUnitCircle * 2.0f;
+		Vector3 offset = Random.insideUnitCircle;
 		return offset;
 	}
 	

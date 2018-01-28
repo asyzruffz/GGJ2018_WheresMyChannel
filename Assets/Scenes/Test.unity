@@ -1127,7 +1127,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787189570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.38, y: -1.17, z: 0}
+  m_LocalPosition: {x: -2.06, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829023508}
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 1210159641}
   pauseObject: {fileID: 296297894}
   playingGame: 0
+  pauseGame: 0
 --- !u!1 &845375619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,7 +1800,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1033511699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.72, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 769327796}
@@ -1950,7 +1951,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162985976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.57, y: 1.68, z: 0}
+  m_LocalPosition: {x: 0.45, y: 2.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829023508}
@@ -1978,7 +1979,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1166786497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.22, y: -3.75, z: 0}
+  m_LocalPosition: {x: 4.56, y: -3.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829023508}
@@ -2074,7 +2075,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1211725460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.42, y: 3.09, z: 0}
+  m_LocalPosition: {x: 3.66, y: 0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829023508}
@@ -2265,7 +2266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1337482160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.75, y: -3.69, z: 0}
+  m_LocalPosition: {x: 0.6, y: -2.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829023508}
@@ -2381,7 +2382,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1356115704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.17, y: -1.17, z: 0}
+  m_LocalPosition: {x: -4.41, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829023508}
@@ -3094,7 +3095,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Click!!
 --- !u!114 &1893663016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3111,7 +3112,7 @@ MonoBehaviour:
   startOnAwake: 0
   subtitleText:
   - "Ahh, time for \nsome relaxation."
-  - "What?! Not again\u2026 that \nantenna won't gonna \nsolve itself."
+  - " What?! Not again\u2026 \nthat antenna won't \ngonna solve itself."
   - "Hey you, \ngo and adjust \nthe antenna."
   textSound: {fileID: 8300000, guid: 59f96b46c94924343b76ded01f32f2de, type: 3}
   tv: {fileID: 1976164161}
@@ -3447,7 +3448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 243.99962, y: 163}
+  m_AnchoredPosition: {x: 243.99963, y: 163}
   m_SizeDelta: {x: 256, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2029566772

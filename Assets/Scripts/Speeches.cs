@@ -29,7 +29,7 @@ public class Speeches : MonoBehaviour {
 
 	void Update () {
 		if (textEnd || !textStart) {
-			if (!startOnAwake && Input.GetKeyDown (skipKey)) {
+			if (!startOnAwake && (Input.GetKeyDown (skipKey) || Input.GetMouseButtonDown (0))) {
 				textStart = true;
 				tv.TurnOnTV (true);
 			}

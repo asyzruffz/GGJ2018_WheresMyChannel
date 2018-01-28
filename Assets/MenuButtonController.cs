@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtonController : MonoBehaviour {
 
@@ -25,13 +26,11 @@ public class MenuButtonController : MonoBehaviour {
 	public GameObject creditObject;
 	public GameObject pauseObject;
 	public GameObject pauseCanvas;
-
-	// Use this for initialization
+	
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
@@ -63,7 +62,7 @@ public class MenuButtonController : MonoBehaviour {
 			buttonTop.transform.position = new Vector3 (buttonTop.transform.position.x, buttonTop.transform.position.y + 0.35f, 0);
 			entering = false;
 			if (isPlay) {
-				Application.LoadLevel ("Test");
+				SceneManager.LoadScene ("Test");
 			}
 			if (isCredit) {
 				if(menuObject != null) menuObject.SetActive (false);
@@ -77,7 +76,7 @@ public class MenuButtonController : MonoBehaviour {
 				Application.Quit ();
 			}
 			if (isMenu) {
-				Application.LoadLevel ("Menu");
+				SceneManager.LoadScene ("Menu");
 			}
 			if (isResume) 
 			{
@@ -85,6 +84,9 @@ public class MenuButtonController : MonoBehaviour {
 					pauseObject.SetActive (false);
 				if (pauseCanvas != null)
 					pauseCanvas.SetActive (false);
+				if (GameController.Instance) {
+					GameController.Instance.SetPaused (false);
+				}
 			}
 		}
 	}
